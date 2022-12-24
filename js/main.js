@@ -6,13 +6,16 @@ const elDeleteBtn=document.querySelector(".js-delete-btn");
 const newEditBtn=document.querySelector(".js-edit-btn");
 const ElAllcount=document.querySelector(".js-Allcount");
 const ElComplateSpan=document.querySelector(".js-Complate");
-
+const ElUncompleted=document.querySelector(".js-uncomplate");
 const todos=[];
 
 const renderTodo=(array,node) =>{
     elList.innerHTML="";
-    ElAllcount.textContent=todos.length;
-    array.forEach(item => {
+    ElAllcount.textContent=array.length;
+    ElComplateSpan.textContent=array.filter((item)=>item.isCompleted).length;
+    ElUncompleted.textContent=array.filter((item)=>!item.isCompleted).length;
+    
+    array.forEach(item => {array
        const newItem=document.createElement("li") ;
        const newSpan=document.createElement("span")
        const newInput=document.createElement("input")
@@ -89,6 +92,8 @@ if(evt.target.matches(".js-check")){
     renderTodo(todos,elList)
     }
 })
+
+
 
 
 
