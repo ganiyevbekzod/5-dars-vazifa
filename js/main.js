@@ -7,6 +7,7 @@ const newEditBtn=document.querySelector(".js-edit-btn");
 const ElAllcount=document.querySelector(".js-Allcount");
 const ElComplateSpan=document.querySelector(".js-Complate");
 const ElUncompleted=document.querySelector(".js-uncomplate");
+const ElDarkmode=document.querySelector(".js-dark")
 const todos=[];
 
 const renderTodo=(array,node) =>{
@@ -92,28 +93,23 @@ if(evt.target.matches(".js-check")){
     renderTodo(todos,elList)
     }
 })
-
-
-
-
-
-
-
-
-//     let complateArray = [];
-//     elBtnComplate.addEventListener("click", () => {
-//     let todoFilter = todos.filter((item) => item.isCompleted == true);
-//     complateArray.push(todoFilter);
-//     console.log(complateArray[0]);
-//     todoFunc(complateArray[0], elList);
-//   });
-// //   let unComplateArray = [];
-//   elUncompBtn.addEventListener("click", () => {
-//     let todoFilter = todos.filter((item) => item.isCompleted == false);
-//     unComplateArray.push(todoFilter);
-//     console.log(unComplateArray[0]);
-//     todoFunc(unComplateArray[0], elList);
-//   });
+// darkmode
+let theme=false
+ElDarkmode.addEventListener("click",function (){
+    theme=!theme
+    const bg=theme ? "dark" :"light";
+    window.localStorage.setItem("theme",bg)
+    changeTheme()
+});
+function changeTheme() {
+    if(window.localStorage.getItem("theme")=="dark"){
+        document.body.classList.add("dark");
+    }
+    else{
+        document.body.classList.remove("dark");
+    }
+    changeTheme()
+}
 
 
 
